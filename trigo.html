@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>Trigonometry Calculator</title>
+	<style>
+		.form-container {
+			max-width: 500px;
+			margin: auto;
+			padding: 20px;
+			border: 1px solid #ccc;
+			box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+			border-radius: 5px;
+			background-color: #f2f2f2;
+			text-align: center;
+		}
+
+		input[type="text"], input[type="number"] {
+			padding: 10px;
+			margin: 10px 0;
+			display: inline-block;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			box-sizing: border-box;
+		}
+
+		button[type="submit"] {
+			background-color: #4CAF50;
+			color: white;
+			padding: 10px 20px;
+			margin: 10px 0;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+		}
+
+			button[type="submit"]:hover {
+				background-color: #45a049;
+			}
+        button[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+            button[type="submit"]:hover {
+                background-color: #45a049;
+            }
+		.result {
+			max-width: 500px;
+			margin: auto;
+			padding: 20px;
+			border: 1px solid #ccc;
+			box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+			border-radius: 5px;
+			background-color: #f2f2f2;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<div class="form-container">
+		<h2>Trigonometry Calculator</h2>
+		<form id="trig-form">
+			<label for="angle-input" style="margin-left: 107px;">Enter the angle in degrees:</label>
+			<input type="number" id="angle-input" name="angle-input" required><br>
+
+			<label for="sin-input">Sine:</label>
+			<input type="number" id="sin-input" name="sin-input" readonly><br>
+
+			<label for="cos-input">Cosine:</label>
+			<input type="number" id="cos-input" name="cos-input" readonly><br>
+
+			<label for="tan-input">Tangent:</label>
+			<input type="number" id="tan-input" name="tan-input" readonly><br>
+
+			<button type="submit">Calculate</button>
+		</form>
+	</div>
+
+	<script>
+		// Add an event listener to the form submit button
+		document.querySelector('#trig-form').addEventListener('submit', function (e) {
+			e.preventDefault(); // Prevent the default form submission
+
+			// Get the input angle in degrees
+			const angleDegrees = parseFloat(document.querySelector('#angle-input').value);
+
+			// Convert the angle to radians
+			const angleRadians = angleDegrees * Math.PI / 180;
+
+			// Calculate the sine, cosine, and tangent of the angle
+			const sinValue = Math.sin(angleRadians);
+			const cosValue = Math.cos(angleRadians);
+			const tanValue = Math.tan(angleRadians);
+
+			// Set the input fields to display the calculated values
+			document.querySelector('#sin-input').value = sinValue.toFixed(4);
+			document.querySelector('#cos-input').value = cosValue.toFixed(4);
+			document.querySelector('#tan-input').value = tanValue.toFixed(4);
+			// Display the result container and scroll to it
+			const resultContainer = document.querySelector('.result');
+			resultContainer.style.display = 'block';
+			resultContainer.scrollIntoView({ behavior: 'smooth' });
+		});
+	</script>
+
+	
+</body>
+</html>
